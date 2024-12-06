@@ -8,16 +8,31 @@ export function saveData(event) {
 
     // Salva no localStorage
     localStorage.setItem(nome, valor); 
+    console.log("ok");
+    console.log("saving" + nome + " " + valor)
     console.log(`Saving to localStorage: ${nome} = ${valor}`);
 }
 
-export function geraFicha(callback) {
+export function carregaScript(callback) {
+   
     alert("Botão Gera Ficha acionado");
-    //window.postMessage({ action: "importarModulo" }, "*");
+    window.postMessage({ action: "importarModulo" }, "*");
     callback();
+    
 }
 
+export function geraFicha() {
+   
+    fichaConfig();
+    
+}
 
+export function loadCard(callback) {
+    alert("função loadCard acionada");
+    importarModulo();
+    console.log("função importar módulo acionada");
+    callback();
+}
 
 export function fichaConfig() { 
     
@@ -38,7 +53,7 @@ export function fichaConfig() {
 function importarModulo() {
     console.log("Importando o módulo...");
 
-    import('./card.js') // Substitua pelo caminho correto do seu módulo
+    import('./card.js') 
         .then((module) => {
             console.log("Módulo importado com sucesso!");
             // O módulo foi carregado, mas nada está sendo chamado ainda.

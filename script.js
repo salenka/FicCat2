@@ -1,4 +1,4 @@
-import { saveData } from './functions.js';
+import { loadCard, saveData } from './functions.js';
 import {geraFicha, fichaConfig} from './functions.js';
 
 alert("Funcionando");
@@ -6,12 +6,12 @@ alert("Funcionando");
 // FORM ----------------------------------------------------------
 
      // Salva o 'input' dos campos do formulário a cada alteração
- document.addEventListener("DOMContentLoaded", function () {
+
     document.querySelectorAll('#ficcat input[type="text"]').forEach(campo => {
        campo.addEventListener("input", saveData);
        });
    
-    })
+    
     document.addEventListener("DOMContentLoaded", function () {
          document.getElementById("btn").addEventListener("click", function () {
             alert("botão acionado");
@@ -31,7 +31,7 @@ alert("Funcionando");
 
 
         });
-    })
+  
          
     
     // CARD ----------------------------------------------------------
@@ -43,12 +43,18 @@ geraFicha(fichaConfig);
 
 })
 
+    })
+
+    // Carregar variáveis (TESTE)
 
 
-    // Exibir a ficha no HTML (TESTE)
+    document.getElementById("btn_lc").addEventListener("click", function () {
 
-
-
+        loadCard(fichaConfig);
+        
+        })
+        
+    
     
 
 
