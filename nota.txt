@@ -39,3 +39,8 @@
 
 
             window.postMessage({ action: "importarModulo" }, "*");
+
+            06/12/2024
+
+            Ficha continua sendo executada antes da importação das variáveis em Card.js.
+            
