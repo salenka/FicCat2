@@ -1,7 +1,6 @@
+    
+export let title = localStorage.getItem("title"); 
 
-// ÁREA DE TÍTULO
-
-export let titulo = document.getElementById("titulo").value;  
-
-export let subtitulo = document.getElementById("subtitulo").value ? `": " + document.getElementById("subtitulo").value` : "";
+const subt = localStorage.getItem("subtitle");
+export let subtitle = subt? `: ${subt}` : "";
     

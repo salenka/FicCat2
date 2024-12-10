@@ -3,54 +3,41 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Ficha</title>
+    <title>Catalog Card</title>
 </head>
 
 
 <body>
     
-    <header class="profile-header"><b>Biblioteca TESTE</b></header>
+    <header class="profile-header"><b>Catalog Card</b></header>
 
-    <form id="ficcat">
+    <form id="catcard">
    
-            <!-- TÍTULO E SUBTÍTULO -->
+            <div id="title-section">
 
-        <div id="titulo-section">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title" required><br><br>
 
-            <label for="titulo">Título</label><br>
-            <input type="text" id="titulo" name="titulo" required><br><br>
-
-            <label for="subtitulo">Subtítulo</label><br>
-            <input type="text" id="subtitulo" name="subtitulo"><br><br>
+            <label for="subtitle">Subtitle</label><br>
+            <input type="text" id="subtitle" name="subtitle"><br><br>
         </div>
 
-          
-     
+      
         <br />
-        <button type="submit" id="btn">Testa conexão</button><br>
-        <button type="button" id="btn_gf">Gera ficha</button><br>
-        <button type="button" id="btn_lc">Load Card</button>
+        <button type="button" id="btn_gc">Generate Card</button><br>
+        
 
         
     </form>
 
-    <div id="fichaCatalografica" style="display: none;">
-        <h3>Ficha Catalográfica:</h3>
-        <p id="ficha_aqui"></p>
+    <div id="catalog-card" style="display: none;">
+        <h3>Catalog Card:</h3>
+        <p id="card-here"></p>
     </div>
-
-
-
-
-
-}
-
-
-   
+    
+    
     <script type="module" src="script.js" charset="utf-8"></script>
     <script type="module" src="functions.js" charset="utf-8"></script>
-
-
 
 </body>
 </html>

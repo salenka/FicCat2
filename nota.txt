@@ -44,3 +44,28 @@
 
             Ficha continua sendo executada antes da importação das variáveis em Card.js.
             
+/*
+//Não usadas
+
+function importarModulo() {
+    console.log("Importando o módulo...");
+
+    import('./card.js') 
+        .then((module) => {
+            console.log("Módulo importado com sucesso!");
+            // O módulo foi carregado, mas nada está sendo chamado ainda.
+        })
+        .catch((error) => {
+            console.error("Erro ao importar o módulo:", error);
+        });
+}
+
+
+export function loadCard(callback) {
+    alert("função loadCard acionada");
+    importarModulo();
+    console.log("função importar módulo acionada");
+    callback();
+}
+}
+*/
