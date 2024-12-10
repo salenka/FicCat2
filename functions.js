@@ -1,6 +1,6 @@
-//import { titulo, subtitulo } from './card.js';
+import { title_, subtitle_ } from './card.js';
 
-
+/*
 export function saveData(event) {
     const field = event.target; // Campo que disparou o evento
     const fieldValue = field.value; // Valor do campo
@@ -11,8 +11,9 @@ export function saveData(event) {
     console.log(`Saving to localStorage: ${fieldName} = ${fieldValue}`);
 }
 
+*/
 export function generateCard() {
-        alert("generateCard executed");
+        console.log("generateCard executed");
         window.postMessage({ action: "importingModule" }, "*");        
     ;
 }
@@ -36,7 +37,7 @@ function cardConfig() {
     console.log ("cardConfig executed");
         
     const card = `
-        ${title}${subtitle} 
+        ${title_}${subtitle_} 
 
     `;
 
