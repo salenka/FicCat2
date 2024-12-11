@@ -1,4 +1,4 @@
-import { title_, subtitle_ } from './card.js';
+import { getTitle, getSubtitle } from './card.js';
 
 /*
 export function saveData(event) {
@@ -11,7 +11,7 @@ export function saveData(event) {
     console.log(`Saving to localStorage: ${fieldName} = ${fieldValue}`);
 }
 
-*/
+
 export function generateCard() {
         console.log("generateCard executed");
         window.postMessage({ action: "importingModule" }, "*");        
@@ -33,8 +33,22 @@ function importModule() {
     )})
 }
 
-function cardConfig() { 
-    console.log ("cardConfig executed");
+
+importModule().then(() => {
+    cardConfig();
+}).catch((error) => {
+    console.error("Error on importing module", error);
+    });
+
+
+
+*/
+
+export function generateCard() { 
+    console.log ("generateCard executed");
+
+    const title_ = getTitle(); // Obter o título atual
+    const subtitle_ = getSubtitle(); // Obter o subtítulo atual
         
     const card = `
         ${title_}${subtitle_} 
@@ -48,8 +62,4 @@ function cardConfig() {
     document.getElementById("catalog-card").style.display = "block";
 }
 
-importModule().then(() => {
-    cardConfig();
-}).catch((error) => {
-    console.error("Error on importing module", error);
-    });
+
