@@ -1,44 +1,171 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
-    <title>Catalog Card</title>
+    <title>Ficha</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <!-- Adicione o link para o CSS do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-
 <body>
-    
-    <header class="profile-header"><b>Catalog Card</b></header>
+    <h3>Form</h3>
 
-    <form id="catcard">
-   
-            <div id="title-section">
+    <form id="cardForm">
 
-            <label for="title_">Title</label><br>
-            <input type="text" id="title_" name="title_" required><br><br>
+        <div id="materialidade" class="form-group">
 
-            <label for="subtitle_">Subtitle</label><br>
-            <input type="text" id="subtitle_" name="subtitle_"><br><br>
+            <p>Preencha as informações abaixo sobre o livro:</p>
+            <input type="radio" id="fisico" name="materia" value="fisico">
+            <label for="fisico">O livro é físico</label>
+            <br>
+            <input type="radio" id="digital" name="materia" value="digital">
+            <label for="digital">O livro é digital</label>
+            
+            <div id="formato-digital">
+                <label for="extensao">Informe a extensão do arquivo digital</label><br>
+                <input type="text" class="form-control" id="extensao" name="extensao">
+            </div>
         </div>
 
-      
-        <br />
-        <button type="button" id="btn_gc">Generate Card</button><br>
-        
+        <div id="codes-section" class="form-group form-group-bordered">
 
-        
+            <div id="codes-ckbox">
+                <input type="checkbox" id="cdd-ckbox" name="codes-ckbox" value="cdd">
+                <label for="cdd-ckbox">CDD</label>
+
+                <input type="checkbox" id="cdu-ckbox" name="codes-ckbox" value="cdu">
+                <label for="cdu-ckbox">CDU</label>
+
+                <input type="checkbox" id="cutter-ckbox" name="codes-ckbox" value="cutter">
+                <label for="cutter-ckbox">Cutter</label>
+
+                <input type="checkbox" id="pha-ckbox" name="codes-ckbox" value="pha">
+                <label for="pha-ckbox">PHA</label>
+            </div>
+
+
+            <div id="code-cdd">
+                <label for="cdd">CDD</label><br>
+                <input type="text" class="form-control" id="cdd" name="cdd">
+            </div>
+
+            <div id="code-cdu">
+                <label for="cdu">CDU</label><br>
+                <input type="text" class="form-control" id="cdu" name="cdu">
+            </div>
+
+            <div id="code-cutter">
+                <label for="cutter">Cutter</label><br>
+                <input type="text" class="form-control" id="cutter" name="cutter">
+            </div>
+
+            <div id="code-pha">
+                <label for="pha">PHA</label><br>
+                <input type="text" class="form-control" id="pha" name="pha">
+            </div>
+        </div>
+
+
+        <div id="license-section" class="form-group form-group-bordered">
+
+            <div id="license-radio">
+
+                <p>Creative Commons License</p>
+
+                <input type="radio" id="by-radio" name="cc-radio" value="by">
+                <label for="by-radio">(CC BY)</label><br>
+
+                <input type="radio" id="by-sa-radio" name="cc-radio" value="by-sa">
+                <label for="by-sa-radio">(CC BY-SA)</label><br>
+
+                <input type="radio" id="by-nd-radio" name="cc-radio" value="by-nd">
+                <label for="by-nd-radio">(CC BY-ND)</label><br>
+
+                <input type="radio" id="by-nc-radio" name="cc-radio" value="by-nc">
+                <label for="by-nc-radio">(CC BY-NC)</label><br>
+
+                <input type="radio" id="by-nc-sa-radio" name="cc-radio" value="by-nc-sa">
+                <label for="by-nc-sa-radio">(CC BY-NC-SA)</label><br>
+
+                <input type="radio" id="by-nc-nd-radio" name="cc-radio" value="by-nc-nd">
+                <label for="by-nc-nd-radio">(CC BY-NC-ND)</label><br>
+
+                <input type="radio" id="cc-0-radio" name="cc-radio" value="cc-0">
+                <label for="cc-0-radio">(CC0)</label>
+            </div>
+
+        </div>
     </form>
-
-    <div id="catalog-card" style="display: none;">
-        <h3>Catalog Card:</h3>
-        <p id="card-here"></p>
+    <div>
+        <button type="button" id="btn-card">Get Card</button><br><br>
     </div>
+
+    <div id="cataloging-card">
+        <br>
+        <div id="card" class="card-box">
+            <p id="codes-here"></p>
+        </div>
+
+        <div>
+            <button type="button" id="btn-pdf">Get PDF</button><br><br>
+        </div>
+    </div>
+
+
+    <div id="page" style="display: none">
+
+        <h3>Catalog Card Page</h3>
+
+        <div id="license">
+
+            <div id="by">
+                <img src="IMG/cc-by.jpg" alt="CC BY" width="150" height="55">
+            </div>
+
+            <div id="by-sa">
+                <img src="IMG/cc-by-sa.jpg" alt="CC BY-SA" width="150" height="55">
+            </div>
+
+            <div id="by-nd">
+                <img src="IMG/cc-by-nd.jpg" alt="CC BY-ND" width="150" height="55">
+            </div>
+
+            <div id="by-nc">
+                <img src="IMG/cc-by-nc.jpg" alt="CC BY-NC" width="150" height="55">
+            </div>
+
+            <div id="by-nc-sa">
+                <img src="IMG/cc-by-nc-sa.jpg" alt="CC BY-NC-SA" width="150" height="55">
+            </div>
+
+            <div id="by-nc-nd">
+                <img src="IMG/cc-by-nc-nd.jpg" alt="CC BY-NC-ND" width="150" height="55">
+            </div>
+
+            <div id="cc-0">
+                <img src="IMG/cc-0.jpg" alt="CC BY" width="150" height="55">
+            </div>
+
+        </div> <!-- div license's -->
+
+
+        <div id="card-pdf" class="card-box">
+            <p><b>CODES</b></p>
+            <p id="codes-here-pdf"></p>
+        </div>
+
+    </div>
+
     
-    
-    <script type="module" src="script.js" charset="utf-8"></script>
+    <script type="module" src="formScript.js" charset="utf-8"></script>
+    <script type="module" src="cardScript.js" charset="utf-8"></script>
     <script type="module" src="functions.js" charset="utf-8"></script>
-    <script type="module" src="card.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 
 </body>
+
 </html>

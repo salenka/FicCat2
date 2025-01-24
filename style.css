@@ -1,0 +1,145 @@
+STYLE.CSS 
+
+
+.img-license {
+    margin: 10px; 
+}
+
+.form-group-bordered {
+
+    border: 1px solid #572222;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin: 0;
+    padding: 0;
+}
+
+#page {
+
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    height: 296mm; 
+    width: 210mm;
+    margin: 0;
+    padding: 0;
+}
+
+#license {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    text-align: center;
+    margin-top: 10mm;
+    font-size: smaller;
+} 
+
+    .licenceText {
+        font-size: 0.7rem;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: justify;   
+    }
+
+    #license img {
+        margin-bottom: 10px; 
+    }
+
+#card-pdf {
+    position: absolute;
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    top: calc(297mm - 75mm - 30mm); 
+}
+
+    .card-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        justify-content: center; 
+        width: 125mm !important;
+        height: 75mm !important;
+        border-top: 1px solid #070210;
+        border-bottom: 1px solid #070210; 
+        box-sizing: border-box; 
+        padding-top: 0px;
+        padding-left: 10px; 
+        padding-right: 10px;
+        padding-bottom: 0px;
+        margin: 0;            
+        overflow: hidden; 
+    }
+
+
+        #codes-here, #codes-here-pdf {
+            margin-top: auto; 
+            padding: 0;
+            font-size: small;
+            font-family: 'Courier New', Courier, monospace;
+            }
+
+#cataloging-card {
+    display: none;
+}
+
+
+#by {
+    display: none
+}
+
+#by-sa {
+    display: none
+}
+
+#by-nd {
+    display: none
+}
+
+#by-nc {
+    display: none
+}
+
+#by-nc-sa {
+    display: none
+}
+
+#by-nc-nd {
+    display: none
+}
+
+#cc-0 {
+    display: none
+}
+
+#code-cdd {
+    display: none
+}
+
+#code-cdu {
+    display: none
+}
+
+#code-cutter {
+    display: none
+}
+
+#code-pha {
+    display: none
+}
+
+#btn-ap {
+    display: none;
+}
+
+#formato-digital {
+    display: none;
+}
