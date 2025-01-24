@@ -24,57 +24,57 @@
             <br>
             <input type="radio" id="digital" name="materia" value="digital">
             <label for="digital">O livro é digital</label>
-            
+
             <div id="formato-digital">
                 <label for="extensao">Informe a extensão do arquivo digital</label><br>
                 <input type="text" class="form-control" id="extensao" name="extensao">
             </div>
         </div>
 
-        <div id="codes-section" class="form-group form-group-bordered">
+        <div id="codigos-section" class="form-group form-group-bordered">
 
-            <div id="codes-ckbox">
-                <input type="checkbox" id="cdd-ckbox" name="codes-ckbox" value="cdd">
+            <div id="codigos-ckbox">
+                <input type="checkbox" id="cdd-ckbox" name="codigos-ckbox" value="cdd">
                 <label for="cdd-ckbox">CDD</label>
 
-                <input type="checkbox" id="cdu-ckbox" name="codes-ckbox" value="cdu">
+                <input type="checkbox" id="cdu-ckbox" name="codigos-ckbox" value="cdu">
                 <label for="cdu-ckbox">CDU</label>
 
-                <input type="checkbox" id="cutter-ckbox" name="codes-ckbox" value="cutter">
+                <input type="checkbox" id="cutter-ckbox" name="codigos-ckbox" value="cutter">
                 <label for="cutter-ckbox">Cutter</label>
 
-                <input type="checkbox" id="pha-ckbox" name="codes-ckbox" value="pha">
+                <input type="checkbox" id="pha-ckbox" name="codigos-ckbox" value="pha">
                 <label for="pha-ckbox">PHA</label>
             </div>
 
 
-            <div id="code-cdd">
+            <div id="codigo-cdd">
                 <label for="cdd">CDD</label><br>
                 <input type="text" class="form-control" id="cdd" name="cdd">
             </div>
 
-            <div id="code-cdu">
+            <div id="codigo-cdu">
                 <label for="cdu">CDU</label><br>
                 <input type="text" class="form-control" id="cdu" name="cdu">
             </div>
 
-            <div id="code-cutter">
+            <div id="codigo-cutter">
                 <label for="cutter">Cutter</label><br>
                 <input type="text" class="form-control" id="cutter" name="cutter">
             </div>
 
-            <div id="code-pha">
+            <div id="codigo-pha">
                 <label for="pha">PHA</label><br>
                 <input type="text" class="form-control" id="pha" name="pha">
             </div>
         </div>
 
 
-        <div id="license-section" class="form-group form-group-bordered">
+        <div id="licenca-section" class="form-group form-group-bordered">
 
-            <div id="license-radio">
+            <div id="licenca-radio">
 
-                <p>Creative Commons License</p>
+                <p>Creative Commons licenca</p>
 
                 <input type="radio" id="by-radio" name="cc-radio" value="by">
                 <label for="by-radio">(CC BY)</label><br>
@@ -98,6 +98,62 @@
                 <label for="cc-0-radio">(CC0)</label>
             </div>
 
+            <!-- DESCRIÇÃO FÍSICA -->
+
+            <!-- Formato -->
+
+            <div id="formato-fisico" class="form-group form-group-bordered">
+
+                <p>Quanto ao formato</p>
+                <input type="radio" id="formato-trad" name="formato" value="tradicional">
+                <label for="formato-trad">O livro tem o formato tradicional</label><br>
+                <input type="radio" id="formato-nao-trad" name="formato" value="nao-tradicional">
+                <label for="formato-nao-trad">O livro tem um formato não tradicional</label><br>
+                <input type="radio" id="sem-formato" name="formato" value="sem-formato">
+                <label for="sem-formato">Não sei ou não desejo informar suas dimensões</label>
+
+                <div id="formato-tradicional">
+                    <label for="altura">Altura em centímetros</label><br>
+                    <input type="text" class="form-control" id="altura" name="altura" required>
+                </div>
+
+                <div id="formato-nao-tradicional">
+                    <label for="largura">Largura em centímetros</label><br>
+                    <input type="text" class="form-control" id="largura" name="largura" required>
+                </div>
+
+
+            </div>
+
+            <!-- Material Adicional -->
+
+            <div id="material-adicional-sn" class="form-group form-group-bordered">
+
+                <p>O livro é acompanhado de material adicional?</p>
+                <input type="radio" id="material-adicional-sim" name="material-adicional-sn" value="sim">
+                <label for="material-adicional-sim">Sim</label>
+
+                <input type="radio" id="material-adicional-nao" name="material-adicional-sn" value="nao">
+                <label for="material-adicional-nao">Não</label>
+
+                <div id="material-adicional">
+
+                    <p>Informe o tipo e a quantidade de material adicional:</p>
+
+                    <label for="material-adicional-tipo">Tipo de material (por exemplo: DVD, Folheto, Brinquedo,
+                        etc)</label><br>
+                    <input type="text" class="form-control" id="material-adicional-tipo"
+                        name="material-adicional-tipo"><br>
+                    <label for="material-adicional-qtd">Quantidade do material (se for mais que uma unidade)</label><br>
+                    <input type="text" class="form-control" id="material-adicional-qtd" name="material-adicional-qtd">
+                </div>
+            </div>
+
+
+
+
+
+
         </div>
     </form>
     <div>
@@ -107,7 +163,8 @@
     <div id="cataloging-card">
         <br>
         <div id="card" class="card-box">
-            <p id="codes-here"></p>
+            <p id="ficha-aqui"></p>
+            <p id="codigos-aqui"></p>
         </div>
 
         <div>
@@ -120,7 +177,7 @@
 
         <h3>Catalog Card Page</h3>
 
-        <div id="license">
+        <div id="licenca">
 
             <div id="by">
                 <img src="IMG/cc-by.jpg" alt="CC BY" width="150" height="55">
@@ -150,17 +207,17 @@
                 <img src="IMG/cc-0.jpg" alt="CC BY" width="150" height="55">
             </div>
 
-        </div> <!-- div license's -->
+        </div> <!-- div licenca's -->
 
 
         <div id="card-pdf" class="card-box">
-            <p><b>CODES</b></p>
-            <p id="codes-here-pdf"></p>
+            <p><b>codigos</b></p>
+            <p id="codigos-aqui-pdf"></p>
         </div>
 
     </div>
 
-    
+
     <script type="module" src="formScript.js" charset="utf-8"></script>
     <script type="module" src="cardScript.js" charset="utf-8"></script>
     <script type="module" src="functions.js" charset="utf-8"></script>

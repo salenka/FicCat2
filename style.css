@@ -1,7 +1,7 @@
 STYLE.CSS 
 
 
-.img-license {
+.img-licenca {
     margin: 10px; 
 }
 
@@ -33,7 +33,7 @@ body{
     padding: 0;
 }
 
-#license {
+#licenca {
     display: flex;
     flex-direction: column;
     align-items: center;  
@@ -49,7 +49,7 @@ body{
         text-align: justify;   
     }
 
-    #license img {
+    #licenca img {
         margin-bottom: 10px; 
     }
 
@@ -80,7 +80,7 @@ body{
     }
 
 
-        #codes-here, #codes-here-pdf {
+        #codigos-aqui, #codigos-aqui-pdf {
             margin-top: auto; 
             padding: 0;
             font-size: small;
@@ -120,19 +120,19 @@ body{
     display: none
 }
 
-#code-cdd {
+#codigo-cdd {
     display: none
 }
 
-#code-cdu {
+#codigo-cdu {
     display: none
 }
 
-#code-cutter {
+#codigo-cutter {
     display: none
 }
 
-#code-pha {
+#codigo-pha {
     display: none
 }
 
@@ -141,5 +141,23 @@ body{
 }
 
 #formato-digital {
+    display: none;
+}
+
+#formato-fisico {
+    display: none;
+}
+
+#formato-tradicional {
+    display: none;
+}
+
+#formato-nao-tradicional {
+    display: none;
+}
+#material-adicional{
+    display: none;
+}   
+#material-adicional-sn {
     display: none;
 }

@@ -1,4 +1,6 @@
-import * as card from '/cardScript.js' 
+
+import * as card from './cardScript.js';
+
 //UNCHECK OPTION
 //from radio or checkbox - parameter:input[name]
 
@@ -51,9 +53,11 @@ export function saveData(event) {
 
 export function generateCard() {
 
-    console.log("botão Gera card acionado");
+    console.log("botão Gerar Ficha acionado");
 
     //chamada de funções de cada área em Card.js
+
+    const materialAdicional = card.getDescricaoFisica().materialAdicional;
 
     const cdd = card.getCodigo().cdd;
     const cdu = card.getCodigo().cdu;
@@ -68,34 +72,57 @@ export function generateCard() {
     ${cutter}
     ${pha}
     `
-    const codes = `\n${cdd} ${cdu} ${cutter} ${pha}`
+    const codigos = `\n${cdd} ${cdu} ${cutter} ${pha}`
+
+   //Configuração da ficha catalográfica
+
+   let ficha = `
+
+   ${materialAdicional}
+
+   `
+   // Ajustes finais
+   ficha = ficha.replace('.. -- ', ' . -- ') // Elimina ponto final que é seguido de marcador de nova seção
+   ficha = ficha.replace('il..', 'il.') // Elimina ponto final da área de série após abreviação il.
+   ficha = ficha.replace('p..', 'p.') // Elimina ponto final da área de série após abreviação p.
+   ficha = ficha.replace('color..', 'color.') // Elimina de ponto final da área de série após abreviação color.
+
+   // Salva ficha no localStorage (para recuperação por a4.js)
+
+   localStorage.setItem('ficha', JSON.stringify(ficha));
+   console.log("ficha salva no localStorage:");
+   console.log(JSON.parse(localStorage.getItem('ficha')));
+
+   
+   localStorage.setItem('codigos', JSON.stringify(codigos));
+
+   // Renderização da ficha
+
+   document.getElementById("ficha-aqui").textContent = ficha;
+   document.getElementById("codigos-aqui").textContent = codigos;
+
+   document.getElementById("cataloging-card").style.display = "block";
+   document.getElementById("btn-pdf").style.display = "block";
+   document.getElementById("font-controls").style.display = "block";
+
+   console.log("Exibiu a ficha em index.html")
+
+   // Verificações
+
+   console.log('ficha gerada no HTML (textContent)');
+   console.log(document.getElementById("ficha-aqui").textContent)
 
 
-
-    // Salva card no localStorage (para recuperação por a4.js)
-    localStorage.setItem('codes', JSON.stringify(codes));
-
-    // Renderização da card
-
-  
-    document.getElementById("codes-here").textContent = codes;
-
-    document.getElementById("cataloging-card").style.display = "block";
-    document.getElementById("btn-pdf").style.display = "block";
-    document.getElementById("font-controls").style.display = "block";
-
-    console.log("Exibiu a card em index.html")
-
-    return { codes };
+    return { codigos, ficha };
 }
 
 
     export function generatePDF() {
 
-        const codes = JSON.parse(localStorage.getItem('codes'));
-        const license = localStorage.getItem("license");
+        const codigos = JSON.parse(localStorage.getItem('codigos'));
+        const licenca = localStorage.getItem("licenca");
 
-        switch (license) {
+        switch (licenca) {
             case "by": 
                 document.getElementById("by").style.display = 'block';
                 break;
@@ -123,7 +150,7 @@ export function generateCard() {
         }
 
         document.getElementById("page").style.display="block";
-        document.getElementById("codes-here-pdf").textContent = codes;
+        document.getElementById("codigos-aqui-pdf").textContent = codigos;
         
         //const content = document.body;
         const content = document.getElementById("page");
