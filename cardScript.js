@@ -35,6 +35,33 @@ export function getLicenca() {
 
 export function getDescricaoFisica() {
 
+    // Dimensões
+
+    //formato digital
+
+    let ext = document.getElementById("extensao").value.trim();
+    const extensao = ext ? ` ; ${ext}` : "";
+
+    //formato físico / dimensões
+
+    const formatoFisico = document.querySelector('input[name="formato"]:checked')?.value; //tradicional ou nao
+
+    let altura = "";
+    let largura = "";
+    let alt = document.getElementById("altura").value.trim();
+    let larg = document.getElementById("largura").value.trim();
+
+    if (formatoFisico === "tradicional") {
+        altura = alt ? ` ; ${alt} cm` : "";
+    } else if (formatoFisico === "nao-tradicional") {
+        altura = alt ? ` ; ${alt} cm` : "";
+        largura = larg ? ` x ${larg} cm` : "";
+    }
+
+    const dimensoes = `${altura}${largura}${extensao}`;
+
+    // Material adicional
+
     let matAdic = document.getElementById("material-adicional-tipo").value.trim();
     let qtdMatAdic = document.getElementById("material-adicional-qtd").value.trim();
 

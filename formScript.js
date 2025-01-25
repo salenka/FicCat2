@@ -1,6 +1,13 @@
-import { uncheckOption, eraseChildText, generateCard, generatePDF } from './functions.js';
+import { uncheckOption, eraseChildText, saveData, generateCard, generatePDF } from './functions.js';
 
 alert("Funcionando");
+
+     // SALVA DADOS - seleciona e salva o 'input' de todos os campos do formulário
+     document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('#card-form input[type="text"]').forEach(campo => {
+           campo.addEventListener("input", saveData);
+           });   
+        })
 
 // Materialidade
 
@@ -92,9 +99,6 @@ document.querySelectorAll('input[name="formato"]').forEach(radio => {
         }
     });
 })
-
-
-
 
 // MATERIAL Adicional
 

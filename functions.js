@@ -34,9 +34,9 @@ export function eraseChildText(motherDivId) {
         inputText.value = '';
     })
 }
-
 // SAVE DATA
 // Saves form's text input in localStorage
+
 export function saveData(event) {
     const campo = event.target; // Campo que disparou o evento
     const valor = campo.value; // Valor do campo
@@ -48,7 +48,6 @@ export function saveData(event) {
     localStorage.setItem(nome, valor);
 }
 
-
 // CARD -----------------------------------------------------------------
 
 export function generateCard() {
@@ -57,6 +56,7 @@ export function generateCard() {
 
     //chamada de funções de cada área em Card.js
 
+    const dimensoes = card.getDescricaoFisica().dimensoes;
     const materialAdicional = card.getDescricaoFisica().materialAdicional;
 
     const cdd = card.getCodigo().cdd;
@@ -74,111 +74,116 @@ export function generateCard() {
     `
     const codigos = `\n${cdd} ${cdu} ${cutter} ${pha}`
 
-   //Configuração da ficha catalográfica
+    //Configuração da ficha catalográfica
 
-   let ficha = `
+    let ficha = `
 
-   ${materialAdicional}
+   ${dimensoes}${materialAdicional}
 
    `
-   // Ajustes finais
-   ficha = ficha.replace('.. -- ', ' . -- ') // Elimina ponto final que é seguido de marcador de nova seção
-   ficha = ficha.replace('il..', 'il.') // Elimina ponto final da área de série após abreviação il.
-   ficha = ficha.replace('p..', 'p.') // Elimina ponto final da área de série após abreviação p.
-   ficha = ficha.replace('color..', 'color.') // Elimina de ponto final da área de série após abreviação color.
+    // Ajustes finais
+    ficha = ficha.replace('.. -- ', ' . -- ') // Elimina ponto final que é seguido de marcador de nova seção
+    ficha = ficha.replace('il..', 'il.') // Elimina ponto final da área de série após abreviação il.
+    ficha = ficha.replace('p..', 'p.') // Elimina ponto final da área de série após abreviação p.
+    ficha = ficha.replace('color..', 'color.') // Elimina de ponto final da área de série após abreviação color.
 
-   // Salva ficha no localStorage (para recuperação por a4.js)
+    // Salva ficha no localStorage (para recuperação por a4.js)
 
-   localStorage.setItem('ficha', JSON.stringify(ficha));
-   console.log("ficha salva no localStorage:");
-   console.log(JSON.parse(localStorage.getItem('ficha')));
+    localStorage.setItem('ficha', JSON.stringify(ficha));
+    console.log("ficha salva no localStorage:");
+    console.log(JSON.parse(localStorage.getItem('ficha')));
 
-   
-   localStorage.setItem('codigos', JSON.stringify(codigos));
 
-   // Renderização da ficha
+    localStorage.setItem('codigos', JSON.stringify(codigos));
 
-   document.getElementById("ficha-aqui").textContent = ficha;
-   document.getElementById("codigos-aqui").textContent = codigos;
+    // Renderização da ficha
 
-   document.getElementById("cataloging-card").style.display = "block";
-   document.getElementById("btn-pdf").style.display = "block";
-   document.getElementById("font-controls").style.display = "block";
+    document.getElementById("ficha-aqui").textContent = ficha;
+    document.getElementById("codigos-aqui").textContent = codigos;
 
-   console.log("Exibiu a ficha em index.html")
+    document.getElementById("cataloging-card").style.display = "block";
+    document.getElementById("btn-pdf").style.display = "block";
+    //document.getElementById("font-controls").style.display = "block";
 
-   // Verificações
+    console.log("Exibiu a ficha em index.html")
 
-   console.log('ficha gerada no HTML (textContent)');
-   console.log(document.getElementById("ficha-aqui").textContent)
+    // Verificações
+
+    console.log('ficha gerada no HTML (textContent)');
+    console.log(document.getElementById("ficha-aqui").textContent)
 
 
     return { codigos, ficha };
 }
 
+// GERAR PDF
 
-    export function generatePDF() {
+export function generatePDF() {
 
-        const codigos = JSON.parse(localStorage.getItem('codigos'));
-        const licenca = localStorage.getItem("licenca");
-
-        switch (licenca) {
-            case "by": 
-                document.getElementById("by").style.display = 'block';
-                break;
-            case "by-sa": 
-                document.getElementById("by-sa").style.display = 'block';
-                break;
-            case "by-nd": 
-                document.getElementById("by-nd").style.display = 'block';
-                break;
-            case "by-nc": 
-                document.getElementById("by-nc").style.display = 'block';
-                break;
-            case "by-nc-sa": 
-                document.getElementById("by-nc-sa").style.display = 'block';
-                break;
-            case "by-nc-nd": 
-                document.getElementById("by-nc-nd").style.display = 'block';
-                break;
-            case "cc-0": 
-                document.getElementById("cc-0").style.display = 'block';
-                break;
-            default:
-                console.log("Licença não selecionada")
-        
-        }
-
-        document.getElementById("page").style.display="block";
-        document.getElementById("codigos-aqui-pdf").textContent = codigos;
-        
-        //const content = document.body;
-        const content = document.getElementById("page");
-
-        const options = {
-            filename: "ficha-catalografica",
-            jsPDF: {
-                unit: "mm", 
-                orientation: "portrait",
-                layout: "portrait",
-                format: [298, 210],
-                content: {
-                align: "center",
-                valign: "middle",
-              }},
-
-        }
-
-        html2pdf().set(options).from(content).outputPdf('blob').then((blob) => {
-            const url = URL.createObjectURL(blob);
-            window.open(url);
-        });
-
-        //SetTimeout é necessário para funcionar (ou PDF em branco)
-
-        setTimeout(function() {
-            document.getElementById("page").style.display = "none";
-        }, 2000);   
+    const codigos = JSON.parse(localStorage.getItem('codigos'));
+    const licenca = localStorage.getItem("licenca");
+    const ficha = JSON.parse(localStorage.getItem('ficha'));
+    
+    switch (licenca) {
+        case "by":
+            document.getElementById("by").style.display = 'block';
+            break;
+        case "by-sa":
+            document.getElementById("by-sa").style.display = 'block';
+            break;
+        case "by-nd":
+            document.getElementById("by-nd").style.display = 'block';
+            break;
+        case "by-nc":
+            document.getElementById("by-nc").style.display = 'block';
+            break;
+        case "by-nc-sa":
+            document.getElementById("by-nc-sa").style.display = 'block';
+            break;
+        case "by-nc-nd":
+            document.getElementById("by-nc-nd").style.display = 'block';
+            break;
+        case "cc-0":
+            document.getElementById("cc-0").style.display = 'block';
+            break;
+        default:
+            console.log("Licença não selecionada")
 
     }
+    document.getElementById("card-form").style.display = "none";
+    document.getElementById("page").style.display = "block";
+    document.getElementById("ficha-aqui-pdf").textContent = ficha;
+    document.getElementById("codigos-aqui-pdf").textContent = codigos;
+
+    //const content = document.body;
+    const content = document.getElementById("page");
+
+    const options = {
+        filename: "ficha-catalografica",
+        jsPDF: {
+            unit: "mm",
+            orientation: "portrait",
+            layout: "portrait",
+            format: [298, 210],
+            content: {
+                align: "center",
+                valign: "middle",
+            }
+        },
+
+    }
+
+    html2pdf().set(options).from(content).outputPdf('blob').then((blob) => {
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+    });
+
+    //SetTimeout é necessário para funcionar (ou PDF em branco)
+
+    setTimeout(function () {
+        document.getElementById("page").style.display = "none";
+        document.getElementById("card-form").style.display = "block";
+    }, 2000);
+
+}
 
