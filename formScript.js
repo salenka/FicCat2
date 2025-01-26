@@ -66,6 +66,8 @@ document.querySelectorAll('input[name="codigos-ckbox"]').forEach(checkbox => {
     })
 })
 
+// Licença
+
 document.querySelectorAll('input[name="cc-radio"]').forEach(radio => {
     radio.addEventListener('change', function () {
 
@@ -73,9 +75,29 @@ document.querySelectorAll('input[name="cc-radio"]').forEach(radio => {
     })
 })
 
+// MATERIAL Adicional
+
+document.querySelectorAll('input[name="material-adicional-sn"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+
+        eraseChildText('material-adicional');
+
+        if (document.getElementById('material-adicional-sim').checked) {
+            document.getElementById('material-adicional').style.display = 'block';
+        } else {
+            document.getElementById('material-adicional').style.display = 'none';
+        }
+    });
+});
+
+
+// Botão Gerar Ficha
+
 document.getElementById("btn-card").addEventListener("click", function () {
     generateCard();
 })
+
+// Botão Gerar PDF
 
 document.getElementById("btn-pdf").addEventListener("click", function () {
     generatePDF();
@@ -100,18 +122,5 @@ document.querySelectorAll('input[name="formato"]').forEach(radio => {
     });
 })
 
-// MATERIAL Adicional
 
-document.querySelectorAll('input[name="material-adicional-sn"]').forEach(radio => {
-    radio.addEventListener('change', function () {
-
-        eraseChildText('material-adicional');
-
-        if (document.getElementById('material-adicional-sim').checked) {
-            document.getElementById('material-adicional').style.display = 'block';
-        } else {
-            document.getElementById('material-adicional').style.display = 'none';
-        }
-    });
-});
 

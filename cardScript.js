@@ -69,5 +69,5 @@ export function getDescricaoFisica() {
 
     // Saída da área de descrição física
 
-    return { materialAdicional }
+    return { materialAdicional, dimensoes, extensao }
 }

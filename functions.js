@@ -93,13 +93,22 @@ export function generateCard() {
     console.log("ficha salva no localStorage:");
     console.log(JSON.parse(localStorage.getItem('ficha')));
 
-
+    // Salva códigos no localStorage (para recuperação por a4.js)
     localStorage.setItem('codigos', JSON.stringify(codigos));
+
+    // Identificação do bibliotecário
+    const bibliotecario = document.getElementById("bibliotecario-nome").value.trim();
+    const crb = document.getElementById("crb").value.trim();
+
+    const identificacao = `${bibliotecario} (bibliotecário responsável) - CRB: ${crb}`;
+    // Exibição da identificação do bibliotecário
+    document.getElementById("bibliotecario-aqui").textContent = identificacao;
 
     // Renderização da ficha
 
     document.getElementById("ficha-aqui").textContent = ficha;
     document.getElementById("codigos-aqui").textContent = codigos;
+    
 
     document.getElementById("cataloging-card").style.display = "block";
     document.getElementById("btn-pdf").style.display = "block";
@@ -120,9 +129,13 @@ export function generateCard() {
 
 export function generatePDF() {
 
-    const codigos = JSON.parse(localStorage.getItem('codigos'));
+    // Oculta todas as divs de licença previamente habilitadas
+    document.querySelectorAll('#licenca>div').forEach(div => {
+        div.style.display = 'none';
+    });
+
+    // Exibe a div da licença salva no localStorage
     const licenca = localStorage.getItem("licenca");
-    const ficha = JSON.parse(localStorage.getItem('ficha'));
     
     switch (licenca) {
         case "by":
@@ -150,10 +163,19 @@ export function generatePDF() {
             console.log("Licença não selecionada")
 
     }
+    
+    const ficha = JSON.parse(localStorage.getItem('ficha'));
+    const codigos = JSON.parse(localStorage.getItem('codigos'));
+    const bibliotecario = document.getElementById("bibliotecario-nome").value.trim();
+    const crb = document.getElementById("crb").value.trim();
+    const identificacao = `${bibliotecario} (bibliotecário responsável) - CRB: ${crb}`;
+   
+    
     document.getElementById("card-form").style.display = "none";
     document.getElementById("page").style.display = "block";
     document.getElementById("ficha-aqui-pdf").textContent = ficha;
     document.getElementById("codigos-aqui-pdf").textContent = codigos;
+    document.getElementById("bibliotecario-aqui-pdf").textContent = identificacao;
 
     //const content = document.body;
     const content = document.getElementById("page");
